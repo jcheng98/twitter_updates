@@ -1,4 +1,8 @@
+# file: owl_city.rb
+
 require 'twilio-ruby'
+require './oo_owl_city.rb'
+
 account_sid = 'ACe330ba04d082392df4cb3511dcb72cec'
 auth_token = '2008ea097713e401a16c54029058da82'
 
@@ -25,18 +29,26 @@ class Texting
 
     @client = Twilio::REST::Client.new(account_sid, auth_token)
 
+    Tweet.create_tweets
+
+    #an array of all tweets
+
+    @tweets = []
+
+    Tweet.all.each do |t|
+      @tweets << "#{t.body} (tweeted #{t.time} ago)"
+    end
 
     @client.account.messages.create(
       :from => '+18152642023',
-      :to => @recipient,
-      :body => @body
+      :to => '+16463061463',
+      :body => @tweets
     )
 
   end
 
 end
 
-new_text = Texting.new
-new_text.recipient=('+16463061463')
-new_text.body=('lmao hi')
-new_text.send(account_sid, auth_token)
+# new_text = Texting.new
+# new_text.recipient=('+16463061463')
+# new_text.send(account_sid, auth_token)
