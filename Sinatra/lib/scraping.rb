@@ -7,7 +7,7 @@ require 'pry'
 class ScrapeTweet
 
   def initialize
-    owl_city_html = open('https://twitter.com/owlcity')
+    owl_city_html = open('https://twitter.com/cnn')
     @owl_city_doc = Nokogiri::HTML(owl_city_html)
   end
 
@@ -69,7 +69,7 @@ class Tweet
   def self.create_tweets
     scraped_data = ScrapeTweet.new
 
-binding.pry
+    binding.pry
     
     updates = scraped_data.scrape_tweet_data
     updates.each do |hash|
