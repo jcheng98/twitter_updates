@@ -37,13 +37,15 @@ class Texting
       @tweets << "#{t.body} (tweeted #{t.time} ago)"
     end
 
-    # if @tweets.length > 0
+    if @tweets.length > 1
+      @tweets.each do |tweet|
       @client.account.messages.create(
         :from => '+18152642023',
         :to => '+16463061463',
-        :body => @tweets
+        :body => tweet
       )
-    # end
+      end
+    end
 
   end
 

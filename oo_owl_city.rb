@@ -2,7 +2,7 @@
 
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
+# require 'pry'
 
 class ScrapeTweet
 
@@ -69,7 +69,7 @@ class Tweet
   def self.create_tweets
     scraped_data = ScrapeTweet.new
 
-binding.pry
+# binding.pry
     
     updates = scraped_data.scrape_tweet_data
     updates.each do |hash|
